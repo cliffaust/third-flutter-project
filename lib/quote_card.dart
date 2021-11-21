@@ -14,25 +14,40 @@ class QuoteCard extends StatelessWidget {
       elevation: 0.0,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: RichText(
-          text: TextSpan(
-            text: quote.quote + ' - ',
-            style: const TextStyle(
-                fontFamily: "Montserrat",
-                color: Colors.black,
-                fontWeight: FontWeight.w500
-            ),
-            children: [
-              TextSpan(
-                  text: quote.author,
-                  style: const TextStyle(
-                      fontFamily: "Montserrat",
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold
+        child: Column(
+          children: [
+            RichText(
+              text: TextSpan(
+                text: quote.quote + ' - ',
+                style: const TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500
+                ),
+                children: [
+                  TextSpan(
+                      text: quote.author,
+                      style: const TextStyle(
+                          fontFamily: "Montserrat",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                      )
                   )
-              )
-            ],
-          ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 5.0,),
+            TextButton.icon(
+              icon: const Icon(
+                  Icons.delete
+              ),
+                onPressed: () {},
+                label: const Text("Delete"),
+              style: TextButton.styleFrom(
+                primary: Colors.redAccent
+              ),
+            )
+          ],
         ),
       ),
     );
