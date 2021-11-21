@@ -20,6 +20,32 @@ class _QuotesState extends State<Quotes> {
     Quote(quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success", author: "James Cameron"),
   ];
 
+  Widget quoteTemplate(quote) {
+    return Card(
+        margin: const EdgeInsets.only(top: 20.0),
+        child: RichText(
+            text: TextSpan(
+                text: quote.quote + ' - ',
+                style: const TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500
+                ),
+                children: [
+                  TextSpan(
+                      text: quote.author,
+                      style: const TextStyle(
+                          fontFamily: "Montserrat",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                      )
+                  )
+                ],
+            ),
+        ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,32 +60,7 @@ class _QuotesState extends State<Quotes> {
         padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
         child: Column(
           children:
-           quotes.map((e) => Container(
-             child: RichText(
-               text: TextSpan(
-                   text: e.quote,
-                   style: const TextStyle(
-                       fontFamily: "Montserrat",
-                       fontWeight: FontWeight.w500
-                   ),
-                 children: [
-                   TextSpan(
-                     text: e.author,
-                     style: const TextStyle(
-                       fontFamily: "Montserrat",
-                       fontWeight: FontWeight.bold
-                     )
-                   )
-                 ]
-               )
-             ),
-             margin: const EdgeInsets.only(top: 20.0),
-             padding: const EdgeInsets.all(20.0),
-             decoration: BoxDecoration(
-               color: Colors.white,
-               borderRadius: BorderRadius.circular(10.0),
-             ),
-           )).toList(),
+           quotes.map((e) => quoteTemplate(e)).toList()
         ),
       ),
     );
